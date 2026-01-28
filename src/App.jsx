@@ -7,18 +7,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import HomePage from "./pages/HomePage"
 import AboutUs from "./pages/AboutUs"
 import Products from "./pages/Products"
+import NavBar from "./components/NavBar"
 
 function App() {
 
   return (
     <>
+      
       <h1>eccoti</h1>
       <BrowserRouter>
         <Routes>
           {/* in questo caso mostrerà solo homepage + h1 che effettivamente è gia presente */}
           <Route path="/" element={<HomePage />} />
-          <Route path="/sudinoi" element={<AboutUs />} />
-          <Route path="/ourproducts" element={<Products />} />
+          <Route path="/su-di-noi" element={<AboutUs />} />
+          <Route path="/our-products" element={<Products />} />
         </Routes>
       </BrowserRouter>
     </>

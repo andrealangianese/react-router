@@ -1,5 +1,6 @@
-import { useState , useEffect} from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
+import NavBar from "../components/NavBar"
 
 function Products() {
 
@@ -20,12 +21,13 @@ function Products() {
     useEffect(getProducts, [])
     return (
         <>
+        <NavBar />
             <h3>i nostri prodotti</h3>
             <div>
                 {prodotti.map(prod => (
                     <div key={prod.id}>
                         <h3>{prod.title}</h3>
-                       <img src= {prod.image} alt={prod.title} width="100" />
+                        <img src={prod.image} alt={prod.title} width="100" />
                     </div>
                 ))}
             </div>
