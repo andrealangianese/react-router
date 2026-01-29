@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import NavBar from "../components/NavBar"
+import { Link } from "react-router-dom"
 
 function Products() {
 
@@ -28,6 +29,7 @@ function Products() {
                     <div key={prod.id}>
                         <h3>{prod.title}</h3>
                         <img src={prod.image} alt={prod.title} width="100" />
+                        <Link to={`/our-products/${prod.id}`}>Dettagliatamente</Link>
                     </div>
                 ))}
             </div>
