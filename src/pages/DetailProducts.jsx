@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 
 // imp axios per chiamata
 
@@ -13,17 +13,27 @@ const endpointNew = "https://fakestoreapi.com/products"
 export default function DetailProducts() {
 
     const { id } = useParams()
+    
+    //dichiaro navigate per tornare indietro, prima di usarlo
 
+    const navigate = useNavigate();
     //nuova var d stato per i dettagli
 
     const [dettagli, setDettagli] = useState({})
 
     //effettuo la chiamata per i dettagli
 
-    useEffect(() => {   
+    useEffect(() => {
         axios.get(`${endpointNew}/${id}`)
             .then((resp) => setDettagli(resp.data))
+            .catch((err) => {
+                console.log(err)
+                navigate("/our-products")
+            })
+
     }, [])
+
+
 
     return (
         <div className="detail-card">
@@ -33,4 +43,5 @@ export default function DetailProducts() {
             <p>Prezzo: {dettagli.price} $</p>
             <p>Descrizione: {dettagli.description}</p>
             <Link to="/our-products">Torna ai prodotti</Link>
-        </div>)}
+        </div>)
+}

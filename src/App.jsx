@@ -9,22 +9,24 @@ import AboutUs from "./pages/AboutUs"
 import Products from "./pages/Products"
 import NavBar from "./components/NavBar"
 import DetailProducts from "./pages/DetailProducts"
+import PageNotFound from "./pages/PageNotFound"
 
 function App() {
 
   return (
     <>
-      
+
       <h1>eccoti</h1>
       <BrowserRouter>
         <Routes>
           {/* in questo caso mostrerà solo homepage + h1 che effettivamente è gia presente */}
           <Route path="/" element={<HomePage />} />
           <Route path="/su-di-noi" element={<AboutUs />} />
-            <Route path="/our-products">
+          <Route path="/our-products">
             <Route index element={<Products />} />
             <Route path=":id" element={<DetailProducts />} />
-            </Route>
+            <Route path="*" element={<PageNotFound />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
