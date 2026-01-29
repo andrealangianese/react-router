@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom"
 
 import axios from "axios"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 //endpoint per aggiungere i dettagli
 
@@ -14,15 +14,23 @@ export default function DetailProducts() {
 
     const { id } = useParams()
 
+    //nuova var d stato per i dettagli
+
+    const [dettagli, setDettagli] = useState({})
+
+    //effettuo la chiamata per i dettagli
+
     useEffect(() => {   
         axios.get(`${endpointNew}/${id}`)
-            .then((resp) => console.log(resp.data))
+            .then((resp) => setDettagli(resp.data))
     }, [])
 
     return (
-        <>
+        <div className="detail-card">
             <h3>Dettagli prodotto {id}</h3>
+            <h4>{dettagli.title}</h4>
+            <img src={dettagli.image} alt={dettagli.title} width="150" />
+            <p>Prezzo: {dettagli.price} $</p>
+            <p>Descrizione: {dettagli.description}</p>
             <Link to="/our-products">Torna ai prodotti</Link>
-        </>)
-}
-
+        </div>)}
