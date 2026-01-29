@@ -24,7 +24,7 @@ function Products() {
         <>
         <NavBar />
             <h3>i nostri prodotti</h3>
-            <div>
+            <div className="prod-page">
                 {prodotti.map(prod => (
                     <div key={prod.id}>
                         <h3>{prod.title}</h3>

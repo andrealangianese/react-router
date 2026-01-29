@@ -25,8 +25,8 @@ function App() {
           <Route path="/our-products">
             <Route index element={<Products />} />
             <Route path=":id" element={<DetailProducts />} />
-            <Route path="*" element={<PageNotFound />} />
           </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </>
